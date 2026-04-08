@@ -105,4 +105,28 @@ router.get('/me', async (req, res) => {
   }
 });
 
+// Setup admin (run once)
+router.post('/setup-admin', async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    
+    if (!email || !password || password !== 'admin123') {
+      return res.status(403).json({ error: 'Invalid credentials' });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+    
+    await db.query(
+      `INSERT INTO users (email, password, full_name, role) 
+       VALUES ($1, $2, $3, $4) 
+       ON CONFLICT (email) DO UPDATE SET role = 'admin'`,
+      [email, hashedPassword, 'Admin', 'admin']
+    );
+
+    res.json({ message: 'Admin created/updated successfully' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 module.exports = router;
