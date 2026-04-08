@@ -1,7 +1,0 @@
-module.exports = {
-  build: {
-    env: {
-      REACT_APP_API_URL: process.env.REACT_APP_API_URL || 'https://d23cdb8e-e6ca-4ac0-8ced-5e3180916839.e1-us-east-azure.choreoapps.dev/api'
-    }
-  }
-};
