@@ -37,7 +37,7 @@ const upload = multer({
 
 // Middleware
 app.use(cors({
-  origin: ['https://dulexluxe.vercel.app', 'https://d23cdb8e-e6ca-4ac0-8ced-5e3180916839.e1-us-east-azure.choreoapps.dev'],
+  origin: ['https://dulexluxe.vercel.app', 'https://d23cdb8e-e6ca-4ac0-8ced-5e3180916839.e1-us-east-azure.choreoapps.dev', 'https://905c52f2-33bc-4415-80fb-c3313c76ac41.e1-us-east-azure.choreoapps.dev'],
   credentials: true
 }));
 app.use(express.json());
@@ -60,8 +60,11 @@ app.post('/api/upload', upload.single('image'), (req, res) => {
     if (!req.file) {
       return res.status(400).json({ error: 'No file uploaded' });
     }
-    const imageUrl = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
-    res.json({ imageUrl });
+    
+    const base64 = fs.readFileSync(path.join(__dirname, 'uploads', req.file.filename), { encoding: 'base64' });
+    const imageDataUrl = `data:${req.file.mimetype};base64,${base64}`;
+    
+    res.json({ imageUrl: imageDataUrl, imageDataUrl });
   } catch (error) {
     console.error('Upload error:', error);
     res.status(500).json({ error: error.message });
