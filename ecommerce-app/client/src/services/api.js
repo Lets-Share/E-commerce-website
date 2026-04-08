@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://ecommerce-api-4lnx.onrender.com/api';
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://d23cdb8e-e6ca-4ac0-8ced-5e3180916839.e1-us-east-azure.choreoapps.dev/api';
 
 const api = axios.create({
   baseURL: API_BASE_URL,

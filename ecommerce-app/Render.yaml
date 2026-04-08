@@ -2,7 +2,7 @@ services:
   - type: web
     name: ecommerce-api
     env: node
-    buildCommand: npm install
+    buildCommand: yarn install
     startCommand: node index.js
     directory: server
     envVars:
