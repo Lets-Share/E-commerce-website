@@ -37,7 +37,7 @@ const upload = multer({
 
 // Middleware
 app.use(cors({
-  origin: ['https://ecommerce-website-ten.vercel.app', 'https://d23cdb8e-e6ca-4ac0-8ced-5e3180916839.e1-us-east-azure.choreoapps.dev'],
+  origin: ['https://dulexluxe.vercel.app', 'https://d23cdb8e-e6ca-4ac0-8ced-5e3180916839.e1-us-east-azure.choreoapps.dev'],
   credentials: true
 }));
 app.use(express.json());
