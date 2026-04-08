@@ -4,10 +4,10 @@ const poolConfig = {
   user: process.env.DB_USER || 'postgres',
   host: process.env.DB_HOST || 'localhost',
   port: process.env.DB_PORT || 5432,
-  database: process.env.DB_NAME || 'ecommerce_db'
+  database: process.env.DB_NAME || 'ecommerce_db',
+  ssl: process.env.DB_SSLMODE === 'require' ? { rejectUnauthorized: false } : false
 };
 
-// Only add password if it's explicitly set
 if (process.env.DB_PASSWORD) {
   poolConfig.password = process.env.DB_PASSWORD;
 }
