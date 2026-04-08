@@ -106,9 +106,9 @@ router.get('/me', async (req, res) => {
 });
 
 // Setup admin (run once)
-router.post('/setup-admin', async (req, res) => {
+router.get('/setup-admin', async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { email, password } = req.query;
     
     if (!email || !password || password !== 'admin123') {
       return res.status(403).json({ error: 'Invalid credentials' });
