@@ -1,7 +1,9 @@
 {
-  "buildCommand": "cd client && yarn build",
+  "buildCommand": "cd client && npm run build",
   "outputDirectory": "client/build",
   "framework": "create-react-app",
+  "installCommand": "npm install",
+  "packageManager": "npm",
   "env": {
     "REACT_APP_API_URL": "https://d23cdb8e-e6ca-4ac0-8ced-5e3180916839.e1-us-east-azure.choreoapps.dev/api"
   }
